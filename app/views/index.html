@@ -1,8 +1,67 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
-  </head>
-  <body>
-    The best place to start is the "WelcomeController.py" file in app/controllers.
-  </body>
+ <head>
+   <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ </head>
+ <body>
+   <div class="container">
+       <div class="row">
+           <div class="col-md-3 gold">
+
+               <h3>Your Gold: {{session['gold']}}</h3>
+               <form action="/reset" method="post">
+               <input type="submit" value="Reset">
+             </form>
+           </div>
+       </div>
+       <br>
+       <div class="row">
+           <div class="col-md-3 place">
+               <form action="/process_money" method="post">
+                   <h2>Farm</h2>
+                   <h5>(Earns 10-20 golds)</h5>
+                   <input type="hidden" name="building" value="farm" />
+                   <button>Find Gold!</button>
+               </form>
+           </div>
+           <div class="col-md-3 place">
+               <form action="/process_money" method="post">
+                   <h2>Cave</h2>
+                   <h5>(Earns 5-10 golds)</h5>
+                   <input type="hidden" name="building" value="cave" />
+                   <button>Find Gold!</button>
+               </form>
+           </div>
+           <div class="col-md-3 place">
+               <form action="/process_money" method="post">
+                   <h2>House</h2>
+                   <h5>(Earns 2-5 golds)</h5>
+                   <input type="hidden" name="building" value="house" />
+                   <button>Find Gold!</button>
+               </form>
+           </div>
+           <div class="col-md-3 place">
+               <form action="/process_money" method="post">
+                   <h2>Casino</h2>
+                   <h5>(Earns/Takes 0-50 golds)</h5>
+                   <input type="hidden" name="building" value="casino" />
+                   <button>Find Gold!</button>
+               </form>
+           </div>
+       </div>
+       <br>
+       <br>
+       <div class="row">
+           <div class="col-md-12 activity_log">
+               <h3>Activities:</h3>
+               <div class="" style="">
+                 {{session['log'] | safe}}
+
+               </div>
+
+           </div>
+       </div>
+
+   </div>
+ </body>
 </html>
